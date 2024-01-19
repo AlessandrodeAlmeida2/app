@@ -46,7 +46,7 @@
 
         <form action="https://google.com" @submit="onSubmit">
             <button type="submit">
-                Enviar
+                Google
             </button><br><br>
         </form>
     </div>
@@ -64,12 +64,21 @@
                 cores: []
             }
         },
+        watch: {
+            sports() {
+                this.changeSports()
+            }
+        },
         methods: {
             onClick($evt) {
                 console.log('click!', $evt)
             },
             onSubmit() {
                 console.log('submit')
+            },
+            changeSports() {
+                console.log('Ajax');
+                console.log(this.sports);
             }
         } 
     }

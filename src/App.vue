@@ -2,7 +2,15 @@
   <TheHeader />
   <div v-for="obj in todos" v-bind:key="obj.id" class="todosItem">
     {{ obj.title }}
-  </div>
+  </div><br>
+  <h2>Todos em aberto</h2>
+  <div v-for="todo in uncompleted" :key="todo.id" class="todosItem">
+    {{ todo.title }}
+  </div><br>
+  <h2>Todos completos</h2>
+  <div v-for="todo in completed" :key="todo.id" class="todosItem">
+    {{ todo.title }}
+  </div><br>
 </template>
 
 <script>
@@ -47,6 +55,14 @@ export default {
             "completed": false
         }
       ]
+    }
+  },
+  computed: {
+    uncompleted() {
+      return this.todos.filter(todo => !todo.completed);
+    },
+    completed() {
+      return this.todos.filter(todo => todo.completed)
     }
   }
 }
