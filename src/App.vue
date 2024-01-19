@@ -11,16 +11,22 @@
   <div v-for="todo in completed" :key="todo.id" class="todosItem">
     {{ todo.title }}
   </div><br>
+  <teste />
+  <BaseCard />
 </template>
 
 <script>
+import BaseCard from './components/BaseCard.vue';
 import TheHeader from './components/TheHeader';
+import teste from './components/teste';
 
 export default {
   name: 'App',
   components: {
-    TheHeader
-  },
+    TheHeader,
+    teste,
+    BaseCard
+},
   data() {
     return {
       todos: [
