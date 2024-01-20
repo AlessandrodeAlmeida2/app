@@ -12,7 +12,12 @@
     {{ todo.title }}
   </div><br>
   <teste />
-  <BaseCard />
+  <BaseCard 
+  v-if="showAlert" 
+  :variant="variant" 
+  v-on:close="onClose()">
+    {{ text }}
+  </BaseCard>
 </template>
 
 <script>
@@ -60,7 +65,10 @@ export default {
             "title": "laboriosam mollitia et enim quasi adipisci quia provident illum",
             "completed": false
         }
-      ]
+      ],
+      showAlert: true,
+      variant: 'success',
+      text: 'Seu formulário foi enviado'
     }
   },
   computed: {
@@ -69,6 +77,12 @@ export default {
     },
     completed() {
       return this.todos.filter(todo => todo.completed)
+    }
+  },
+  methods: {
+    onClose() {
+      this.showAlert = false;
+      console.log('on close');
     }
   }
 }
